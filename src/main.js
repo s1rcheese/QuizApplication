@@ -41,7 +41,7 @@ const question = (i) => {
         if (userAnswer < 1 || userAnswer > 4) { //if userAnswer is not within 1 and 4, error is displayed.
             console.log(`Error. You are attempting the ${questionNumber[i]} question.`);
             question(i); //recursion
-        } else if (userAnswer >= 1 || userAnswer < 5) { //if userAnswer is within 1 and 4 
+        } else { 
             initiateQuiz.selectedCategoryArray[i].storeAnswer(userAnswer); //store the answer
             if (i === 4) { //if i equals to 4
                 if (initiateQuiz.selectedCategoryArray[i].userAnswer.length != 5) { // and When userAnswer length is not 5  
