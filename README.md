@@ -25,7 +25,7 @@ Credits to - https://www.npmjs.com/package/readline-sync which I'm using for acc
 # Getting Started
 1. `git clone` this repository.
 2. Open `Visual Studio Code`
-3. From the menu, choose Debug --> Open Configuration, then select "node.js". Visual Studio Code will then open launch.json, which is the      configuration file for all your programs.
+3. From the menu, choose Debug --> Open Configuration, then select "node.js". Visual Studio Code will then open launch.json, which is the configuration file for all your programs.
 ----------------------------------------------------------------------------------------------------------------------------------------
 ![launch.json](https://user-images.githubusercontent.com/51396102/65371982-4e68a300-dc9c-11e9-81c8-18b99723fb5d.png)
 
