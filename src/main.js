@@ -1,24 +1,40 @@
-let Quiz = require("./Quiz"); //import quiz class
+const Quiz = require("./Quiz"); //import quiz class
 const input = require('readline-sync');
-let questionNumber = ["first", "second", "third", "fourth", "fifth"]; //question position display
-let initiateQuiz = new Quiz(); //instantiate new Quiz 
-let questions = initiateQuiz.getQuestions(initiateQuiz.chooseCategory()); //assign the questions of the chosen Category to questions.
+const questionNumber = ["first", "second", "third", "fourth", "fifth"]; //question position display
+const initiateQuiz = new Quiz(); //instantiate new Quiz 
+const questions = initiateQuiz.getQuestions(initiateQuiz.chooseCategory()); //assign the questions of the chosen Category to questions.
 
-question(0); //0 because it starts from qn 1
-
-if (initiateQuiz.quizResults() == 0) {
-    console.log("Hi " + initiateQuiz.name + ". Try again next time.");
-} 
-
-else if ((initiateQuiz.quizResults() > 0) && (initiateQuiz.quizResults() < 5)) {
-    console.log("Hi " + initiateQuiz.name + ". Fair work. You scored " + initiateQuiz.quizResults() + " out of 5.");
-} 
-
-else {
-    console.log("Hi " + initiateQuiz.name + ". Well done. You got full marks.");
+const showUserAns = () => { //showUserAnswerSummary
+    console.log("Here are your answers:")
+    for (let i = 0; i < 5; i++) {
+        let msg = questions[i].question;
+        msg += "\nAnswer: (" + initiateQuiz.selectedCategoryArray[i].userAnswer + ") " + initiateQuiz.selectedCategoryArray[i].choice[initiateQuiz.selectedCategoryArray[i].userAnswer - 1] + "\n"
+        console.log(msg);
+    }
 }
 
-function question(i) {
+const changeAnswer = () => { //changeAnswer function
+    changeAnswerQuestion = parseInt(input.question("Enter 0 to submit your quiz or [1 to 5] to change your answer.\n>>"));
+    if (changeAnswerQuestion === 0) {
+        console.log("You have submitted your quiz.");
+    } else if (changeAnswerQuestion < 1 || changeAnswerQuestion > 5) {
+        console.log("INVALID INPUT. PLEASE RETRY.");
+        changeAnswer();
+    } else if (changeAnswerQuestion >= 1 || changeAnswerQuestion < 6) {
+        for (let i = 0; i < questions.length; i++) {
+            if ((i + 1) == changeAnswerQuestion) {
+                userAnswer = parseInt(input.question(questions[i].outputQuestionFormat() + "\n" + "<enter 1 to 4 for answer>" + "\n>>"));
+                while (userAnswer < 1 || userAnswer > 4 || isNaN(userAnswer)) {
+                    console.log(`Please re-enter answer for ${questionNumber[i]} question.`);
+                    userAnswer = parseInt(input.question(questions[i].outputQuestionFormat() + "\n" + "<enter 1 to 4 for answer>" + "\n>>"));
+                }
+                initiateQuiz.selectedCategoryArray[i].storeAnswer(userAnswer);
+            }
+        }
+    }
+}
+
+const question = (i) => {
     let q = questions[i];
     let userAnswer = input.question("\n" + q.outputQuestionFormat() + "\n" + "<enter 1 to 4 for answer, P for previous question, N for next question>" + "\n>>");
     if (!isNaN(userAnswer)) { //if userAnswer is a number
@@ -79,32 +95,19 @@ function question(i) {
     }
 }
 
-function showUserAns() { //showUserAnswerSummary
-    console.log("Here are your answers:")
-    for (let i = 0; i < 5; i++) {
-        let msg = questions[i].question;
-        msg += "\nAnswer: (" + initiateQuiz.selectedCategoryArray[i].userAnswer + ") " + initiateQuiz.selectedCategoryArray[i].choice[initiateQuiz.selectedCategoryArray[i].userAnswer - 1] + "\n"
-        console.log(msg);
-    }
+question(0); //0 because it starts from qn 1
+
+if (initiateQuiz.quizResults() == 0) {
+    console.log(`Hi ${initiateQuiz.name}. Try again next time.`);
+} 
+
+else if ((initiateQuiz.quizResults() > 0) && (initiateQuiz.quizResults() < 5)) {
+    console.log(`Hi ${initiateQuiz.name}. Fair work. You scored ${initiateQuiz.quizResults()} out of 5.`);
+} 
+
+else {
+    console.log(`Hi ${initiateQuiz.name}. Well done. You got full marks.`);
 }
 
-function changeAnswer() { //changeAnswer function
-    changeAnswerQuestion = parseInt(input.question("Enter 0 to submit your quiz or [1 to 5] to change your answer.\n>>"));
-    if (changeAnswerQuestion === 0) {
-        console.log("You have submitted your quiz.");
-    } else if (changeAnswerQuestion < 1 || changeAnswerQuestion > 5) {
-        console.log("INVALID INPUT. PLEASE RETRY.");
-        changeAnswer();
-    } else if (changeAnswerQuestion >= 1 || changeAnswerQuestion < 6) {
-        for (let i = 0; i < questions.length; i++) {
-            if ((i + 1) == changeAnswerQuestion) {
-                userAnswer = parseInt(input.question(questions[i].outputQuestionFormat() + "\n" + "<enter 1 to 4 for answer>" + "\n>>"));
-                while (userAnswer < 1 || userAnswer > 4 || isNaN(userAnswer)) {
-                    console.log(`Please re-enter answer for ${questionNumber[i]} question.`);
-                    userAnswer = parseInt(input.question(questions[i].outputQuestionFormat() + "\n" + "<enter 1 to 4 for answer>" + "\n>>"));
-                }
-                initiateQuiz.selectedCategoryArray[i].storeAnswer(userAnswer);
-            }
-        }
-    }
-}
+
+
