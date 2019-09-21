@@ -1,5 +1,5 @@
 # Quiz Application 
-A Simple Quiz Application (Vanilla JS). 
+A Simple Quiz Application. 
 
 # Introduction
 This application is written in `Javascript`. 
