@@ -41,7 +41,7 @@ const question = (i) => {
         if (userAnswer < 1 || userAnswer > 4) { //if userAnswer is not within 1 and 4, error is displayed.
             console.log(`Error. You are attempting the ${questionNumber[i]} question.`);
             question(i); //recursion
-        } else { 
+        } else if (userAnswer > 1 && userAnswer < 5){ 
             initiateQuiz.selectedCategoryArray[i].storeAnswer(userAnswer); //store the answer
             if (i === 4) { //if i equals to 4
                 if (initiateQuiz.selectedCategoryArray[i].userAnswer.length != 5) { // and When userAnswer length is not 5  
@@ -70,7 +70,7 @@ const question = (i) => {
                 question(i + 1); //since i does not equals to 4 (i.e. not question5 yet, proceed to the next question)
             }
         }
-    } else if (isNaN(userAnswer)) { //if this is a string 
+    } else { 
         if (userAnswer.toLowerCase() == "p") { //if user pressed p or P, it will go to the previous question.
             if (i == 0) { //if user pressed p or P at first question, alert the user that u only can press next.
                 console.log("You can only press NEXT now");
