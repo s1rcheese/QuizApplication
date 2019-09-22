@@ -4,12 +4,20 @@ let questionNumber = ["first", "second", "third", "fourth", "fifth"]; //question
 let initiateQuiz = new Quiz(); //instantiate new Quiz 
 let questions = initiateQuiz.getQuestions(initiateQuiz.chooseCategory()); //assign the questions of the chosen Category to questions.
 question(0); //0 because it starts from qn 1
+
 if (initiateQuiz.quizResults() == 0) {
     console.log("Hi " + initiateQuiz.name + ". Try again next time.");
 } else if ((initiateQuiz.quizResults() > 0) && (initiateQuiz.quizResults() < 5)) {
     console.log("Hi " + initiateQuiz.name + ". Fair work. You scored " + initiateQuiz.quizResults() + " out of 5.");
 } else {
     console.log("Hi " + initiateQuiz.name + ". Well done. You got full marks.");
+}
+console.log("Here are the correct answers.\n")
+
+for (let i = 0; i < questions.length; i++) {
+    let msg = questions[i].question;
+    msg += "\nAnswer: (" + questions[i].answer + ") " + questions[i].choice[questions[i].answer] + "\n"
+    console.log(msg);
 }
 
 function question(i) {
