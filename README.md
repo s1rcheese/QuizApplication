@@ -36,4 +36,27 @@ Credits to - https://www.npmjs.com/package/readline-sync which I'm using for acc
 
 
 6. Debug the file named `main.js` with `Node.JS`.
-6. You're ready!
+7. You're ready!
+
+# Troubleshooting Guide
+![Error](https://user-images.githubusercontent.com/51396102/65385240-f8106880-dd5e-11e9-9f63-1b4b7b9f54ee.png)
+
+The error is saying that the path to your code was wrong.
+
+VSCode defines the parent directory of its configuration file ".vscode/launch.json" as "${workspaceRoot}" or "${workspaceFolder}".
+
+So, for example, if you want to run file "myproject/subfolder/main.js", you should configure your "myproject/.vscode/launch.json" as follows: 
+"program": "${workspaceRoot}/subfolder/main.js"
+
+Note that configuring 
+"program": "${workspaceRoot}/myproject/subfolder/main.js"
+is a mistake and will cause error "Attribute 'program' does not exist".
+
+-Visual Example
+When the error pops out, click open `launch.json`. You will arrive at here.
+![Before](https://user-images.githubusercontent.com/51396102/65385252-28580700-dd5f-11e9-91cd-226482570ae1.png)
+
+After fixing it:
+![After](https://user-images.githubusercontent.com/51396102/65385289-9270ac00-dd5f-11e9-9c7d-1a9b2e0abb83.png)
+
+You are good to go!
