@@ -1,0 +1,26 @@
+{
+  "name": "quizapplication",
+  "version": "1.0.0",
+  "description": "Simple Quiz Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeZeehun/QuizApplication.git"
+  },
+  "keywords": [
+    "quiz",
+    "js"
+  ],
+  "author": "Hwang Jihun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeZeehun/QuizApplication/issues"
+  },
+  "homepage": "https://github.com/CodeZeehun/QuizApplication#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
