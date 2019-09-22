@@ -19,6 +19,8 @@ Credits to - https://www.npmjs.com/package/readline-sync which I'm using for acc
 
 - A `navigation` function e.g. Enter `P` to go to previous question, `N` to go to next question (meaning user can choose to skip the question being displayed and come back to answer later). 
 
+- A summary of the correct answers for the user to review.
+
 # Image of how the program roughly looks
 ![Quiz Application](https://user-images.githubusercontent.com/51396102/65371815-1bbdab00-dc9a-11e9-8f5a-095d1eb948f3.png)
 
