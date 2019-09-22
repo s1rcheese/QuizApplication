@@ -16,7 +16,7 @@ console.log("Here are the correct answers.\n")
 
 for (let i = 0; i < questions.length; i++) {
     let msg = questions[i].question;
-    msg += "\nAnswer: (" + questions[i].answer + ") " + questions[i].choice[questions[i].answer] + "\n"
+    msg += `\nAnswer: (${questions[i].answer + 1}) ${questions[i].choice[questions[i].answer]} \n`;
     console.log(msg);
 }
 
