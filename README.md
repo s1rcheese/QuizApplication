@@ -1,3 +1,6 @@
+# NOTE
+This repo was suppose to be a fork of [CodeZeehun's QuizApplication](https://github.com/CodeZeehun/QuizApplication). I honestly don't know what I was doing when I was trying to fork the orginal repo.
+
 # Quiz Application 
 A Simple Quiz Application. 
 
